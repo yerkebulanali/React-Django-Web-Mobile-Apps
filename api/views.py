@@ -3,9 +3,15 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets, status
 from .models import Movie, Rating
-from .serializers import MovieSerializers, RatingSerializers
+from .serializers import MovieSerializers, RatingSerializers, UserSerializers
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializers
+
 
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
